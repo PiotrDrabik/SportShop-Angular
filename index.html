@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Sport Shop - Angular1 i Deployd</title>
+	 <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	 <link href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css" rel="stylesheet">
+	 <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css">
+	 <link href="node_modules/angular/angular-csp.css" rel="stylesheet">
+	 <link href="style.css" rel="stylesheet">
+
+</head>
+<body data-ng-controller="main">
+<nav-menu></nav-menu>
+<!--
+	<div data-ng-controller="main">
+		<div class="container-fluid">
+		  <div class="row" style="background-color:grey;">
+		    <div class="col-4" style="background-color:grey; border: 1px black solid;">
+				<div class="card">
+				  <h3 ng-click="categSelected=''" class="card-header text-center kategCursor">Kategorie</h3>
+				</div>
+				 <div class="card-block">
+				 	<div ng-repeat="item in data | orderBy: 'category' | single: 'category'">
+						<button type="button" ng-click="clicked(item.category)" class="btn btn-secondary kategFull" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+						  {{ item.category }}
+						</button> 
+						<hr />
+					</div>
+				 </div>
+		    </div>
+		    <div class="col">
+		      <div class="card" style="width: 50%;">
+		      	<div ng-repeat="item2 in data | filter: categSelected"> 
+				  <p ng-if="($first) && (categSelected!='')" class="card-header">{{ item2.category }}</p>
+				  <p ng-if="($first) && (categSelected=='')" class="card-header">Artykuły ze wszystkich grup</p>
+				  <div class="card-block">
+				    <h4 class="card-title">{{ item2.name }}</h4>
+				    <p class="card-text">{{ item2.description }}</p>
+				    <a href="#" class="btn btn-primary">{{ item2.price | currency }}</a>
+				  </div>
+				  <p class="line"></p>
+				</div>
+				</div>
+		    </div>
+		  </div>
+		</div>
+	</div>-->
+	<ng-view></ng-view>
+	<ng-include src="'views/productList.html'"></ng-include>
+	<!--
+	<div>
+		<ul>
+			<li><a href="#/done">Link1 done</a></li>
+			<li><a href="#/done2">Link2 done2</a></li>
+		</ul>
+
+	</div>
+	<div class="button">TEST BUTTON</div>
+	<div class="items">
+		<p>.</p>
+		<p>.</p>
+		<p>1234</p>
+		<hr />
+		<p>.</p>
+	</div>
+	-->
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/tether/dist/js/tether.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/angular/angular.min.js"></script>
+	<!--
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	-->
+	<script src="additional/angular-route.min.js"></script>
+	
+	<script src="additional/angular-locale_pl-pl.js"></script>
+	<script src="filters/customFilters.js"></script>
+	<script src="bundle.js"></script>
+
+
+</body>
+</html>

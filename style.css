@@ -1,0 +1,35 @@
+.whiteTxt {
+	color: white;
+	display: inline-block;
+}
+
+.kategFull {
+	width: 100%;
+}
+
+.line {
+	border-bottom: solid 1px black;
+	background-color: grey;
+	margin: 10px 0px 10px 0;
+	padding: 5px 0px 5px 0;
+}
+
+.kategCursor:hover/*,button:hover*/ {
+	cursor: pointer;
+}
+
+.shoppingCount {
+	
+	display: inline-block;
+	position:relative;
+	margin: auto;
+	color:red;
+	background-color: yellow;
+	background: yellow;
+	width: 20px;
+	height: 20px;
+  	text-align: center;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}

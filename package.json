@@ -1,0 +1,29 @@
+{
+  "name": "sportshp",
+  "version": "1.0.0",
+  "description": "Sport Show with Angular 1 and Deployd",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.js --watch",
+    "build": "webpack"
+  },
+  "author": "Piotr Drabik",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "css-loader": "^0.26.1",
+    "font-awesome": "^4.7.0",
+    "node-sass": "^4.3.0",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "angular": "^1.6.1",
+    "bootstrap": "^4.0.0-alpha.5",
+    "jquery": "^3.1.1"
+  }
+}
