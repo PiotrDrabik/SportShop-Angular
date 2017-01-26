@@ -1,7 +1,7 @@
 	<div>
 		<div class="container-fluid">
-		  <div class="row" style="background-color:grey;">
-		    <div class="col" style="background-color:grey; border: 1px black solid;">
+		  <div class="row greyBackground">
+		    <div class="col greyBackground" style="border: 1px black solid;">
 				<div class="card">
 				  <h3 ng-click="clicked('')" class="card-header text-center kategCursor">Kategorie</h3>
 				</div>
@@ -15,7 +15,7 @@
 				 </div>
 		    </div>
 		    <div class="col-md-5 col-sm-12">
-		      <div class="card">
+		      <div class="card" id="productList">
 		      	<div ng-repeat="item2 in data | filter: categSelected"> 
 				  <p ng-if="($first)" class="card-header">{{ categHeader }}</p>
 				  <div class="card-block">

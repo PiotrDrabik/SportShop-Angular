@@ -12,7 +12,43 @@
 
 </head>
 <body data-ng-controller="main">
+
 <nav-menu></nav-menu>
+
+<!--
+<nav class="navbar navbar-inverse bg-inverse">
+-->
+<!-- Navbar content 
+	<div class="row">
+      <div class="col-md-5 col-sm-12">
+  		<span class="whiteTxt center-block"><h3>Sport Shop - Angular1 i Deployd</h3></span>
+	  </div>
+   	  <div class="col">
+	    <div class="input-group">
+	      <input type="text" ng-model="search" ng-keyup="clicked('~'+search)" class="form-control" placeholder="Szukaj w sklepie">
+	      <span class="input-group-btn">
+	        <button class="btn btn-secondary" ng-click="clicked('~'+search)"  type="button">Szukaj</button>
+	      </span>
+	    </div>
+      </div>
+      -->
+<!--
+	    <div class="navbar-form navbar-left" role="search">
+		  <div class="form-group">
+		    	<input type="text" ng-model="search" ng-keyup="clicked('~'+search)" class="form-control" placeholder="Szukaj w sklepie">
+		  </div>
+		</div>
+
+		</div>
+		 <div class="col">
+		  	<button type="submit" ng-click="clicked('~'+search)" class="btn btn-default">Szukaj</button>-->
+		  <!--
+    <div class="col kategCursor" ng-click="showCard()">
+  		<span class="whiteTxt"> Mój koszyk <span class="shoppingCount"><strong> {{shoppingCard.length}} </strong></span> </span><i class="fa fa-shopping-cart fa-2x whiteTxt" aria-hidden="true"></i>
+  	</div>
+  </div>
+</nav>
+-->
 <!--
 	<div data-ng-controller="main">
 		<div class="container-fluid">
@@ -47,9 +83,9 @@
 		  </div>
 		</div>
 	</div>-->
-	<ng-view></ng-view>
+	<ng-view ></ng-view>
+<!--	
 	<ng-include src="'views/productList.html'"></ng-include>
-	<!--
 	<div>
 		<ul>
 			<li><a href="#/done">Link1 done</a></li>
@@ -75,7 +111,8 @@
 	-->
 	<script src="additional/angular-route.min.js"></script>
 	
-	<script src="additional/angular-locale_pl-pl.js"></script>
+	<script src="additional/angular-locale_pl-pl.js"></script> 
+	<script src="additional/angular-animate.min.js"></script>
 	<script src="filters/customFilters.js"></script>
 	<script src="bundle.js"></script>
 

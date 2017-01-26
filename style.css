@@ -13,6 +13,16 @@
 	margin: 10px 0px 10px 0;
 	padding: 5px 0px 5px 0;
 }
+.space {
+	margin: 10px;
+}
+
+.spaceBigger {
+	margin-right: 15%;
+	margin-left: 15%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
 
 .kategCursor:hover/*,button:hover*/ {
 	cursor: pointer;
@@ -33,3 +43,28 @@
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
+
+.greyBackground, body {
+	background-color:grey;
+}
+/* animation */
+
+#productList div.ng-enter {
+	transition: 0.5s linear all;
+  	opacity:0;
+}
+
+#productList div.ng-enter-stagger {
+	transition-delay: 0.1s;
+	transition-duration: 0s;
+}
+/*
+#productList div.ng-enter {
+	transition: 0.5s linear all;
+	opacity:0;
+}
+*/
+#productList div.ng-enter.ng-enter-active {
+	opacity:1;
+}
+

@@ -1,0 +1,34 @@
+<div>
+	<div class="container-fluid">
+		 <div class="row greyBackground">
+		    <div class="col greyBackground">
+		    </div>
+		    <div class="col-md-7 col-sm-12">
+		      <div class="card">
+		      	<div class="space">
+			      	<h3>Lista zakupów</h3>
+			      	Suma zakupów: {{count}}
+		      	</div>
+		      	<p class="line"></p>
+		      	<div ng-show="shoppingCard==0" class="space">Twój koszyk jest pusty. Dodaj artykuły do koszyka</div>
+		      	<div ng-repeat="item2 in shoppingCard"> 
+		      	<!--
+				  <p ng-if="($first)" class="card-header">{{ categHeader }}</p>
+				  -->
+				  <div class="card-block">
+				    <h4 class="card-title">{{ item2.name }}</h4>
+				    <p class="card-text">{{ item2.description }}</p>
+					<button ng-click="remove($index)" type="button" class="btn btn-warning kategCursor">Usuń z koszyka</button><button type="button" class="btn btn-secondary">{{ item2.price | currency }}</button>
+				  </div>
+				  <p class="line"></p>
+				</div>
+				<button ng-click="back()" type="button" class="btn btn-primary kategCursor spaceBigger">Powrót do sklepu</button>
+				<!--
+				<a ng-href="#/" type="button" class="btn btn-primary kategCursor">Powrót do sklepu</a>
+				-->
+				</div>
+		    </div>
+			<div class="col"></div>
+		 </div>
+	</div>
+</div>

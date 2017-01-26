@@ -1,5 +1,5 @@
 //require('./node_modules/test.scss');
-var app = angular.module('app', ['customFilter','ngRoute']);
+var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 
 	app.directive('navMenu', function() {
 	  return {
@@ -13,20 +13,20 @@ var app = angular.module('app', ['customFilter','ngRoute']);
 		$routeProvider
 		.when('/',
 		{
-			templateUrl: '/views/done.html',
-			controller: 'main'
+			templateUrl: 'views/productList.html'//,
+			//controller: 'main'
 		})
-		.when('/done2',
+		.when('/card',
 		{
-			templateUrl: '/views/done2.html',
-			controller: 'main'
+			templateUrl: 'views/shoppingcard.html'//,
+			//controller: 'main'
 		})
 		.otherwise({
 			template: 'Brak strony!'
 		});
 	}]);
 
-	app.controller('main', ['$scope', '$http', '$log', function($scope, $http, $log) {
+	app.controller('main', ['$scope', '$http', '$log', '$location', function($scope, $http, $log, $location) { 
 		$scope.checkdata = function(somedata) {
 			$scope.status = somedata.status;
 	        $scope.data = somedata.data;
@@ -39,19 +39,31 @@ var app = angular.module('app', ['customFilter','ngRoute']);
 
 		$scope.categHeader = "Wszystkie artykuły";		
 		
-		$scope.showCard = function() {
-			console.log('your shopping card have:');
-			console.log($scope.shoppingCard);
-			var count = 0;
+		$scope.back = function() {
+			$location.url('/');
+		};
+
+		$scope.countCard = function() {
+			$scope.count = 0;
 			for (var value3 in $scope.shoppingCard) {
-				count += $scope.shoppingCard[value3].price;
-				console.log(typeof(count));
+				$scope.count += $scope.shoppingCard[value3].price;
 			}
-			console.log('wynik' + count);
+		};
+
+		$scope.showCard = function() {
+			$scope.countCard();
+			$location.url('/card');
+		};
+
+		$scope.remove = function(index) {
+			$scope.shoppingCard.splice(index,1);
+			$scope.countCard();
 		};
 
 		$scope.AddToCard = function(item2) {
+			item2.amount = 1;
 			$scope.shoppingCard.push(item2);
+			$log.info($scope.shoppingCard);
 		};
 
 		$http({
