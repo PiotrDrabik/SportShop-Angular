@@ -87,7 +87,7 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 		};
 
 		$http({
-			module: "GET",
+			method: "GET",
 			url: 'http://localhost:2403/products/'
 		}).
 		 then(function(success) {
@@ -95,6 +95,48 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
         }, function(failure) {
           $scope.checkdata(failure);
       	});
+
+		$scope.sendOrder = function(formData) {
+			var order = angular.copy($scope.shoppingCard);
+			var tempData = formData;
+			tempData.products = order;
+			tempData.gift = false;
+			/*
+			var tempData2 = JSON.stringify(formData);
+			try {
+        		JSON.parse(tempData);
+    		} catch (e) {
+        		console.log("to nie JSON");
+        		console.log(e);
+    		} 
+    		tempData = formData;
+    		console.log(tempData);
+			tempData = JSON.stringify(formData);
+			console.log(tempData);
+			try {
+        		JSON.parse(tempData);
+    		} catch (e) {
+        		console.log("to nie JSON");
+        		console.log(e);
+    		} 
+    		console.log("to JSON");*/
+    		console.log(tempData);
+    		$http({
+			method: "POST",
+			url: 'http://localhost:2403/orders/',
+			data: tempData
+			}).then(function(success) {
+				console.log("OK");
+				console.log(success);
+			}, function(failure) {
+          		console.log("Problem");
+				console.log(failure);
+      	});
+
+
+
+
+		};
 
 		$scope.clicked = function(wasClick) {
 			//search button
