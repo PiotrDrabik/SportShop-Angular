@@ -19,7 +19,10 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 		.when('/card',
 		{
 			templateUrl: 'views/shoppingcard.html'//,
-			//controller: 'main'
+		})
+		.when('/accept',
+		{
+			templateUrl: 'views/acceptcard.html'//,
 		})
 		.otherwise({
 			template: 'Brak strony!'
@@ -34,36 +37,53 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 		};
 		
 		$scope.shoppingCard = [];
-
 		$scope.categSelected = "";
-
+		$scope.checkBehave = "";
 		$scope.categHeader = "Wszystkie artykuły";		
-		
+		$scope.cardAmount = 0;
 		$scope.back = function() {
+			$scope.checkBehave = '';
 			$location.url('/');
+		};
+
+		$scope.changeAmount = function(amount, index) {
+			if (amount >= 1) {
+				$scope.shoppingCard[index].amount = amount;
+				$scope.checkBehave = 'add';
+			}
+			$scope.countCard();
 		};
 
 		$scope.countCard = function() {
 			$scope.count = 0;
+			$scope.cardAmount = 0;
 			for (var value3 in $scope.shoppingCard) {
-				$scope.count += $scope.shoppingCard[value3].price;
+				$scope.count += $scope.shoppingCard[value3].price * $scope.shoppingCard[value3].amount;
+				$scope.cardAmount += $scope.shoppingCard[value3].amount;
 			}
 		};
 
 		$scope.showCard = function() {
 			$scope.countCard();
+			$scope.checkBehave = '';
 			$location.url('/card');
+		};
+
+		$scope.acceptCard = function() {
+			$scope.checkBehave = '';
+			$location.url('/accept');	
 		};
 
 		$scope.remove = function(index) {
 			$scope.shoppingCard.splice(index,1);
+			$scope.checkBehave = 'delete';
 			$scope.countCard();
 		};
 
 		$scope.AddToCard = function(item2) {
 			item2.amount = 1;
 			$scope.shoppingCard.push(item2);
-			$log.info($scope.shoppingCard);
+			$scope.countCard();
 		};
 
 		$http({

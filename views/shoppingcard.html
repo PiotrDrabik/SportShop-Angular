@@ -6,8 +6,15 @@
 		    <div class="col-md-7 col-sm-12">
 		      <div class="card">
 		      	<div class="space">
-			      	<h3>Lista zakupów</h3>
-			      	Suma zakupów: {{count}}
+			      	<h3 class="spaceTopBottom">Lista zakupów</h3>
+			      	<p>Suma zakupów: <button type="button" class="btn btn-secondary">{{count || 0 | currency }}</button></p>
+			      	<p>Liczba produktów w koszyku: <button type="button" class="btn btn-secondary">{{cardAmount}} szt.</button></p>
+		      	</div>
+				<div ng-show="checkBehave == 'add'" class="space" style="background-color:green; color: white;">
+		      		Zmieniono liczbę produktów w koszyku
+		      	</div>
+		      	<div ng-show="checkBehave == 'delete'" class="space" style="background-color:red; color: white;">
+		      		Usunięto produkt z koszyka
 		      	</div>
 		      	<p class="line"></p>
 		      	<div ng-show="shoppingCard==0" class="space">Twój koszyk jest pusty. Dodaj artykuły do koszyka</div>
@@ -15,14 +22,30 @@
 		      	<!--
 				  <p ng-if="($first)" class="card-header">{{ categHeader }}</p>
 				  -->
-				  <div class="card-block">
-				    <h4 class="card-title">{{ item2.name }}</h4>
-				    <p class="card-text">{{ item2.description }}</p>
-					<button ng-click="remove($index)" type="button" class="btn btn-warning kategCursor">Usuń z koszyka</button><button type="button" class="btn btn-secondary">{{ item2.price | currency }}</button>
+				  <div class="row">
+				  	<div class="col">
+					  <div class="card-block">
+					    <h4 class="card-title">{{ item2.name }}</h4>
+					    <p class="card-text">{{ item2.description }}</p>
+					    <p class="card-text">Liczba artykułów w koszyku: </p>
+					    <input class="form-control" type="number" ng-model="card.amount" ng-change="changeAmount(card.amount,$index)" 
+					    ng-value="{{ item2.amount }}"> 
+					    <p>Liczba produktów w koszyku: {{card.amount = item2.amount}}</p>
+						<button ng-click="remove($index)" ng-model="card.delete" type="button" class="btn btn-warning kategCursor">Usuń z koszyka</button><button type="button" class="btn btn-secondary">{{ item2.price | currency }} szt.</button>
+					  </div>
+					</div>
+					<div class="col">
+						<img src="sample.jpg">
+					</div>
 				  </div>
 				  <p class="line"></p>
 				</div>
-				<button ng-click="back()" type="button" class="btn btn-primary kategCursor spaceBigger">Powrót do sklepu</button>
+				<div class="row">
+				  	<div class="col-12">
+						<button ng-click="back()" type="button" class="btn btn-primary kategCursor spaceBigger">Kontynuuj zakupy</button>
+						<button ng-click="acceptCard()" type="button" class="btn btn-success kategCursor spaceBigger">Zatwierdź koszyk</button>
+					</div>
+				</div>
 				<!--
 				<a ng-href="#/" type="button" class="btn btn-primary kategCursor">Powrót do sklepu</a>
 				-->

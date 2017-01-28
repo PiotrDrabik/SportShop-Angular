@@ -7,14 +7,31 @@
 	width: 100%;
 }
 
+
+
 .line {
 	border-bottom: solid 1px black;
 	background-color: grey;
 	margin: 10px 0px 10px 0;
 	padding: 5px 0px 5px 0;
 }
+
+.blackLine {
+	border-bottom: 1px solid black;
+	margin-bottom: 2%;
+}
+
 .space {
 	margin: 10px;
+}
+
+.spaceTopBottom {
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+form > .row > .col {
+	margin-bottom: 1%;
 }
 
 .spaceBigger {
@@ -26,6 +43,26 @@
 
 .kategCursor:hover/*,button:hover*/ {
 	cursor: pointer;
+}
+
+input.ng-dirty.ng-invalid {
+    border-color: red;
+}
+
+input.ng-dirty.ng-valid {
+    border-color: lightgreen;
+}
+
+small.error {
+    display: block;
+    font-size: 0.66667rem;
+    font-style: italic;
+    font-weight: normal;
+    margin-bottom: 0.88889rem;
+    margin-top: -8px;
+    padding: 0.33333rem 0.5rem 0.5rem;
+    background: #f04124;
+    color: #FFFFFF;
 }
 
 .shoppingCount {
@@ -47,11 +84,28 @@
 .greyBackground, body {
 	background-color:grey;
 }
+
+.inputWidth {
+	width:100%;
+	color: white;
+}
+
+.inputWidth > input  {
+	width:100%;
+}
+
+form  {
+    border: 1px solid black;
+    margin-top: 10px;
+    padding:2%;
+}
+
 /* animation */
+
 
 #productList div.ng-enter {
 	transition: 0.5s linear all;
-  	opacity:0;
+  	opacity:0.2;
 }
 
 #productList div.ng-enter-stagger {
@@ -68,3 +122,18 @@
 	opacity:1;
 }
 
+.ng-enter, .ng-move {
+	opacity: 0.2;
+}
+
+.ng-enter.ng-enter-active, .ng-move.ng-move-active {
+	opacity: 1;	
+}
+
+.ng-leave {
+	opacity: 1;		
+}
+
+.ng-leave.ng-leave-active {
+	opacity: 0.2;
+}
