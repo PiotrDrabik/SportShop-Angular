@@ -1,6 +1,19 @@
+
 .whiteTxt {
 	color: white;
 	display: inline-block;
+}
+
+.colorGreen {
+	color: green;
+}
+
+.lightGreen {
+	color: lightgreen;
+}
+
+.itemSelected {
+	color: lightgreen;	
 }
 
 .kategFull {
@@ -97,10 +110,19 @@ small.error {
 	width:100%;
 }
 
-form  {
+form{
     border: 1px solid black;
     margin-top: 10px;
     padding:2%;
+}
+
+#hintItems {
+	border: 1px solid grey;
+	color:white; 
+	margin-top: 15px;
+	width:80%;
+	/*----*/
+	color:white; margin-top: 15px; font-size: 0.66667rem; line-height: 5px;
 }
 
 /* animation */

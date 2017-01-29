@@ -19,11 +19,23 @@
 		      	<div ng-repeat="item2 in data | filter: categSelected"> 
 				  <p ng-if="($first)" class="card-header">{{ categHeader }}</p>
 				  <div class="card-block">
-				    <h4 class="card-title">{{ item2.name }}</h4>
+				    <h4 class="card-title kategCursor" ng-click="showItem(item2)">{{ item2.name }}</h4>
 
 				    <p class="card-text">{{ item2.description }}</p>
 
-					<button ng-click="AddToCard(item2)" type="button" class="btn btn-primary kategCursor">Dodaj do koszyka</button><button type="button" class="btn btn-secondary">{{ item2.price | currency }}</button>
+					<button ng-click="AddToCard(item2)" type="button" class="btn btn-success kategCursor">Dodaj do koszyka</button><button type="button" 
+					class="btn btn-secondary">{{ item2.price | currency }}</button>
+					<!--
+					<div class="fa space fa-heart" ng-class="{fa-heart-o: mouseon}" ng-mouseleave="" ng-init="mouseon = false"
+					ng-mouseenter="mouseon = true" ng-click="changeFavorite()" aria-hidden="true"></div>-->
+					
+					<i ng-hide="item2.favorite" class="colorGreen space fa fa-heart-o" ng-click="changeFavorite(item2, 'add')" ng-class="{itemSelected: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" aria-hidden="true"></i>
+
+					<i ng-show="item2.favorite" class="colorGreen space fa fa-heart" ng-click="changeFavorite(item2, 'add')" ng-class="{itemSelected: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" aria-hidden="true"></i>
+
+					<!--
+					<i class="fa fa-heart space" ng-mouseleave="changeFavorite()" 
+					ng-mouseenter="changeFavorite()" ng-click="changeFavorite()" aria-hidden="true"></i>-->
 				  </div>
 				  <p class="line"></p>
 				</div>

@@ -1,0 +1,45 @@
+<div>
+	<div class="container-fluid">
+		 <div class="row greyBackground">
+		    <div class="col greyBackground">
+		    </div>
+		    <div class="col-md-7 col-sm-12">
+		      <div class="card">
+		      	<div class="space">
+			      	<h3 class="spaceTopBottom">Twoje ulubione produkty</h3>
+		      	</div>
+		      	<p class="line"></p>
+		      	<div ng-repeat="item2 in favorite"> 
+		      	<!--
+				  <p ng-if="($first)" class="card-header">{{ categHeader }}</p>
+				  -->
+				  <div class="row">
+				  	<div class="col">
+					  <div class="card-block">
+					    <h4 class="card-title kategCursor" ng-click="showItem(item2)">{{ item2.name }}</h4>
+					    <p class="card-text">{{ item2.description }}</p>
+					    <button ng-click="AddToCard(item2)" type="button" class="btn btn-success kategCursor">Dodaj do koszyka</button><button type="button" 
+						class="btn btn-secondary">{{ item2.price | currency }}</button>					    
+					  </div>
+					</div>
+					<div class="col">
+						<img src="sample.jpg">
+					</div>
+				  </div>
+				  <p class="line"></p>
+				</div>
+				<div class="row">
+				  	<div class="col-12">
+						<button ng-click="back()" type="button" class="btn btn-primary kategCursor spaceBigger">Kontynuuj zakupy</button>
+						<button ng-click="showCard()" type="button" class="btn btn-success kategCursor spaceBigger">Przejdź do koszyka</button>
+					</div>
+				</div>
+				<!--
+				<a ng-href="#/" type="button" class="btn btn-primary kategCursor">Powrót do sklepu</a>
+				-->
+				</div>
+		    </div>
+			<div class="col"></div>
+		 </div>
+	</div>
+</div>

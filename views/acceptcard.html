@@ -21,7 +21,7 @@
         <div class="row">
 			<div class="col">
 				<label class="inputWidth">Imię
-                    <input type="text" ng-invalid name="fnameInput" placeholder="Wpisz imię" name="UserName" ng-model="user.firstname" required>
+                    <input type="text" ng-invalid name="fnameInput" placeholder="Wpisz imię" ng-model="user.firstname" ng-value="readLocalStorage('user.firstname')" required>
                 </label>
                 <div ng-show="form1.fnameInput.$touched" class="kategFull error">
                     <small ng-hide="form1.fnameInput.$valid" class="error">Wprowadź swoje imię</small>
@@ -29,7 +29,7 @@
 			</div>
 			<div class="col">
 				<label class="inputWidth">Nazwisko
-                  <input type="text" placeholder="Wpisz nazwisko" name="lnameInput" ng-model="user.lastname" required>
+                  <input type="text" placeholder="Wpisz nazwisko" name="lnameInput" ng-model="user.lastname" ng-value="readLocalStorage('user.lastname')" required>
                 </label>
                 <div ng-show="form1.lnameInput.$touched" class="kategFull">
                     <small ng-hide="form1.lnameInput.$valid" class="error">Wprowadź swoje nazwisko</small>
@@ -39,7 +39,7 @@
 		<div class="row">
 			<div class="col">
 				<label class="inputWidth">Adres e-mail
-                    <input type="email" placeholder="Wpisz adres e-mail" class="input-group-field" name="mailInput" ng-model="user.email" required>
+                    <input type="email" placeholder="Wpisz adres e-mail" class="input-group-field" name="mailInput" ng-value="readLocalStorage('user.email')" ng-model="user.email" required>
                 </label>
                 <div ng-show="form1.mailInput.$touched" class="kategFull">
                       <small ng-show="form1.mailInput.$error.required" class="error">Podaj adres e-mail</small>
@@ -59,7 +59,8 @@
 		<div class="row">
 			<div class="col">
 				<label class="inputWidth">Adres dostawy [kod pocztowy i miasto]
-                    <input type="text" placeholder="Wpisz kod pocztowy i miasto" class="input-group-field" name="userCity" ng-model="user.zipandcity" required>
+                    <input type="text" placeholder="Wpisz kod pocztowy i miasto" class="input-group-field" name="userCity" ng-model="user.zipandcity"
+                    ng-value="readLocalStorage('user.zipandcity')" required>
                 </label>
                 <div ng-show="form1.userCity.$touched" class="kategFull">
                       <small ng-hide="form1.userCity.$valid" class="error">Wpisz poprawny adres: kod pocztowy oraz miasto</small>
@@ -67,7 +68,8 @@
 			</div>
 			<div class="col">
 				<label class="inputWidth">Adres dostawy [ulica i numer domu]
-                  <input type="text" name="userStreet" placeholder="Wpisz ulicę i numer domu" ng-model="user.street" class="input-group-field" required>
+                  <input type="text" name="userStreet" placeholder="Wpisz ulicę i numer domu" ng-model="user.street" class="input-group-field"
+                  ng-value="readLocalStorage('user.street')" required>
                 </label>
                 <div ng-show="form1.userStreet.$touched" class="kategFull">
                     <small ng-hide="form1.userStreet.$valid" class="error">Wpisz poprawny adres: ulicę i numer domu</small>
@@ -76,11 +78,11 @@
 		</div>
 		<div class="row">
 			<div class="col inputWidth text-center">
-				<button ng-click="showCard()" type="button" class="btn btn-primary kategCursor kategMid">Wróć do koszyka</button>
+				<button ng-click="saveLocalStorage(user)" type="button" class="btn btn-primary kategCursor kategMid">Wróć do koszyka</button>
 			</div>
 			<div class="col inputWidth text-center">
             	<button ng-click="sendOrder(user)" type="button" class="btn btn-success kategCursor kategMid" name="button"
- 				ng-disabled="!(form1.password.$valid && form1.fnameInput.$valid && form1.lnameInput.$valid && form1.mailInput.$valid && form1.userCity.$valid && form1.userStreet.$valid)">Zatwierdź</button>
+ 				ng-disabled="!(form1.password.$valid && form1.fnameInput.$valid && form1.lnameInput.$valid && form1.mailInput.$valid && form1.userCity.$valid && form1.userStreet.$valid)">Zatwierdź zamówienie</button>
 			</div>
  			</div>
  		</div>

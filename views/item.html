@@ -1,0 +1,31 @@
+<div class="container-fluid">
+	<div class="row greyBackground">
+		<div class="col"></div>
+		<div class="col-md-10 col-sm-12">
+			<div class="card">
+			 <div class="row">
+			 <div class="col">
+			  <div class="card-block">
+					<h3 class="card-title">{{ selectedItem.name }}</h3>
+					<p class="card-text">{{ selectedItem.description }}</p>
+					<button ng-click="AddToCard(item2)" type="button" class="btn btn-success kategCursor">Dodaj do koszyka</button><button type="button" class="btn btn-secondary">{{ selectedItem.price | currency }}</button>
+			   <p class="card-text spaceTopBottom"><strong>Opis produktu:</strong></p>
+			   <p class="card-text spaceTopBottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sollicitudin eget lectus vel consectetur. Cras a feugiat lectus, nec pellentesque lacus. Nulla quis libero ipsum. Quisque aliquet lorem vitae felis egestas auctor. Pellentesque rutrum diam sed ultricies vestibulum. Duis placerat, lectus id placerat elementum, metus ligula volutpat elit, sit amet tincidunt ante nibh ut nisl. In hac habitasse platea dictumst. Donec vitae lectus neque. Suspendisse condimentum elit molestie mollis rutrum. Maecenas vel posuere ante, et tristique lorem.
+
+				Maecenas imperdiet mauris vitae nisi ultricies aliquam. Integer suscipit, turpis sit amet gravida blandit, magna nisl pretium lacus, vel pellentesque tellus lectus vel diam. Vestibulum scelerisque nulla enim, at tincidunt turpis posuere nec. Nulla ac sagittis ipsum. Donec a varius leo. Nulla laoreet ut metus ac accumsan. In malesuada erat quis ante consectetur fringilla. Proin non ex at ligula imperdiet vehicula. Suspendisse id porta augue. Nam sed blandit velit. Nunc id tincidunt neque. Donec sit amet mollis odio. Vivamus sed orci faucibus, scelerisque metus et, imperdiet nulla.
+
+				Duis quam felis, tincidunt et eros vel, consequat dictum tellus. Aliquam aliquet gravida mi, quis pulvinar sem iaculis porttitor. Morbi pulvinar orci quis laoreet viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam interdum in libero eleifend auctor. Quisque turpis ipsum, faucibus eu luctus eu, tristique sit amet massa. Aenean in sem ac nisi facilisis laoreet. Duis tempus semper magna, eget tincidunt mauris mattis non. Vestibulum volutpat ex vel placerat aliquam. In malesuada purus sit amet sollicitudin ultricies. In hac habitasse platea dictumst. Integer in mi auctor, consectetur leo eu, imperdiet libero. Aenean luctus lectus eu tincidunt ornare. Fusce ut consectetur elit. Proin pharetra consectetur facilisis.</p>
+				<button ng-click="back()" type="button" class="btn btn-primary kategCursor spaceBigger kategMid">Powrót</button>
+			   </div>
+			  </div>
+			    <div class="col spaceTopBottom text-center" >
+			  		<img src="sample.jpg">
+			  		<hr />
+			  		<img src="sample.jpg">
+			  	</div>
+			  </div>
+			</div>
+		</div>
+		<div class="col"></div>
+	</div>
+</div>
