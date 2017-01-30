@@ -28,6 +28,10 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 		{
 			templateUrl: 'views/favorite.html'
 		})
+		.when('/thankyou',
+		{
+			templateUrl: 'views/thankyoupage.html'
+		})
 		.when('/accept',
 		{
 			templateUrl: 'views/acceptcard.html',
@@ -176,7 +180,7 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 		$scope.readLocalStorage = function(read) {
 			if (typeof(Storage) != "undefined") {
 				if (localStorage[read]) {
-					return localStorage[read];	
+					return localStorage[read]+'*';	
 				}
 			}
 		};
@@ -248,10 +252,19 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
       	});
 
 		$scope.sendOrder = function(formData) {
+			//if
 			var order = angular.copy($scope.shoppingCard);
 			var tempData = formData;
 			tempData.products = order;
 			tempData.gift = false;
+			/*
+			console.log(tempData);
+			tempData.firstname = formData.firstname || $scope.readLocalStorage('user.firstname');
+			tempData.lastname = formData.lastname || $scope.readLocalStorage('user.lastname');
+			tempData.email = formData.email || $scope.readLocalStorage('user.email');
+			tempData.zipandcity = formData.zipandcity || $scope.readLocalStorage('user.zipandcity');
+			tempData.street = formData.street || $scope.readLocalStorage('user.street');
+			*/
 			/*
 			var tempData2 = JSON.stringify(formData);
 			try {
@@ -284,7 +297,10 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 					console.log(failure);
       			});
 
-
+			$scope.shoppingCard = [];
+			$scope.checkBehave = '';
+			$scope.countCard();
+			$location.url('/thankyou');
 
 
 		};

@@ -21,7 +21,8 @@
         <div class="row">
 			<div class="col">
 				<label class="inputWidth">Imię
-                    <input type="text" ng-invalid name="fnameInput" placeholder="Wpisz imię" ng-model="user.firstname" ng-value="readLocalStorage('user.firstname')" required>
+                    <input type="text" name="fnameInput" placeholder="Wpisz imię" ng-model="user.firstname" ng-value="readLocalStorage('user.firstname')"
+                    ng-minlength="1" required>
                 </label>
                 <div ng-show="form1.fnameInput.$touched" class="kategFull error">
                     <small ng-hide="form1.fnameInput.$valid" class="error">Wprowadź swoje imię</small>
