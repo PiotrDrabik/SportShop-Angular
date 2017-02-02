@@ -1,0 +1,37 @@
+<h1 ng-click="authenticate('admin', 'Polska')">Admin login</h1>
+
+<div class="container">
+   <form name="form2" novalidate>
+   		<div class="row">
+			<div class="col" ng-show="errormsg">
+				{{errormsg}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<label class="inputWidth">Login
+                    <input type="text" name="fnameInput" placeholder="Wpisz imię" ng-model="user.firstname" ng-value="readLocalStorage('user.firstname')"
+                    ng-minlength="1" required>
+                </label>
+                <div ng-show="form2.fnameInput.$touched" class="kategFull error">
+                    <small ng-hide="form2.fnameInput.$valid" class="error">Wprowadź poprawny login</small>
+                </div>
+			</div>
+			<div class="col">
+				<label class="inputWidth">Hasło
+                  <input type="password" name="password" placeholder="Wpisz hasło" ng-model="user.password" pattern=".{5,}" class="input-group-field" required>
+                </label>
+                <div ng-show="form2.password.$touched" class="kategFull">
+                    <small ng-show="form2.password.$error.required" class="error">Wprowadź hasło</small>
+                    <small ng-show="form2.password.$error.pattern" class="error">Wprowadzone hasło jest zbyt krótkie</small>
+                </div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col inputWidth text-center">
+            	<button ng-click="authenticate(user.firstname, user.password)" type="button" class="btn btn-success kategCursor kategMid" name="button"
+ 				ng-disabled="!(form2.password.$valid && form2.fnameInput.$valid)">Zaloguj się</button>
+			</div>
+ 		</div>
+	</form>
+</div>

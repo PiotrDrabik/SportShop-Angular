@@ -57,7 +57,7 @@ form > .row > .col {
 	margin-bottom: 1%;
 }
 
-.kategCursor:hover/*,button:hover*/ {
+.kategCursor:hover {
 	cursor: pointer;
 }
 

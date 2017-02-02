@@ -29,9 +29,9 @@
 					<div class="fa space fa-heart" ng-class="{fa-heart-o: mouseon}" ng-mouseleave="" ng-init="mouseon = false"
 					ng-mouseenter="mouseon = true" ng-click="changeFavorite()" aria-hidden="true"></div>-->
 					
-					<i ng-hide="item2.favorite" class="colorGreen space fa fa-heart-o" ng-click="changeFavorite(item2, 'add')" ng-class="{itemSelected: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" aria-hidden="true"></i>
+					<i ng-hide="item2.favorite" class="colorGreen kategCursor space fa fa-heart-o" ng-click="changeFavorite(item2, 'add')" ng-class="{itemSelected: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" aria-hidden="true"></i>
 
-					<i ng-show="item2.favorite" class="colorGreen space fa fa-heart" ng-click="changeFavorite(item2, 'add')" ng-class="{itemSelected: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" aria-hidden="true"></i>
+					<i ng-show="item2.favorite" class="colorGreen kategCursor space fa fa-heart" ng-click="changeFavorite(item2, 'add')" ng-class="{itemSelected: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" aria-hidden="true"></i>
 
 					<!--
 					<i class="fa fa-heart space" ng-mouseleave="changeFavorite()" 

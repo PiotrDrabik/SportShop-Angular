@@ -1,0 +1,28 @@
+
+.whiteTxt {
+	color: white;
+	display: inline-block;
+}
+
+button {
+	margin-top: 2%;
+	width: 60%;
+}
+
+.margin2p {
+	margin: 2%;
+}
+
+.kategFull, div > label, input {
+	width: 100%;
+}
+
+form {
+	border: 1px solid grey;
+    margin-top: 10px;
+    padding:2%;
+}
+
+.kategCursor:hover {
+	cursor: pointer;
+}
