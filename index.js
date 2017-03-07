@@ -1,59 +1,52 @@
-//require('./node_modules/test.scss');
-var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 
-	app.directive('navMenu', function() {
-	  return {
-	    restrict: 'AE',
-	    templateUrl: './directives/my-nav.html'
-	  };
-	});
+require('./style.scss');
+require('angular');
+require('./additional/angular-route.min.js');
+require('./additional/angular-locale_pl-pl.js');
+require('./additional/angular-animate.min.js');
+require('./filters/customFilters.js');
+require('./directives/appconfig.js');
+require('./services/storage.js');
 
-	app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider){
-		$locationProvider.hashPrefix('');
-		$routeProvider
-		.when('/',
-		{
-			templateUrl: 'views/productList.html'//,
-			//controller: 'main'
-		})
-		.when('/card',
-		{
-			templateUrl: 'views/shoppingcard.html'
-		})
-		.when('/item',
-		{
-			templateUrl: 'views/item.html'
-		})
-		.when('/favorite',
-		{
-			templateUrl: 'views/favorite.html'
-		})
-		.when('/thankyou',
-		{
-			templateUrl: 'views/thankyoupage.html'
-		})
-		.when('/accept',
-		{
-			templateUrl: 'views/acceptcard.html',
-			resolve: {
-				function() {
-					console.log("Changing routing to /accept");
-				}
-			}
-		})
-		.otherwise({
-			template: 'Brak strony!'
-		});
-	}]);
+var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate', 'appConfig', 'moduleStorage']);
 
-	app.controller('main', ['$scope', '$http', '$log', '$location', function($scope, $http, $log, $location) { 
+require('./directives/nav-menu.js')(app);
+
+	app.controller('main', ['$scope', '$http', '$log', '$location', 'browStorage', '$interval', function($scope, $http, $log, $location, browStorage, $interval) { 
 		$scope.checkdata = function(somedata) {
 			$scope.status = somedata.status;
 	        $scope.data = somedata.data;
 	        $log.info($scope.data);
 	        $scope.loadFavorite();
 		};
-		
+
+		$scope.carousel1 = function() {
+          var carousl = [];
+          $scope.promise = $interval(function() {
+          	if (carousl.length == 0) {
+	          	carousl[0] = $('.carousel-item:first');
+	          	carousl[1] = $('.carousel-item:nth-child(2)');
+	          	carousl[2] = $('.carousel-item:nth-child(3)');
+	          }
+            if (carousl[0].hasClass('active')) {
+            	carousl[0].removeClass('active');
+            	carousl[1].addClass('active');
+            } else if (carousl[1].hasClass('active')) {
+            	carousl[1].removeClass('active');
+            	carousl[2].addClass('active');
+            } else if (carousl[2].hasClass('active')) {
+            	carousl[2].removeClass('active');
+            	carousl[0].addClass('active');
+            }
+              
+          }, 5000);
+        };
+        $scope.stopCarousel = function() {
+        	$interval.cancel($scope.promise);
+        	$scope.closeCarousel = true;
+        }
+        $scope.promise;
+        $scope.carousel1();
 		$scope.shoppingCard = [];
 		$scope.favorite = [];
 		$scope.categSelected = "";
@@ -61,9 +54,24 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 		$scope.categHeader = "Wszystkie artykuły";		
 		$scope.cardAmount = 0;
 		$scope.selectedItem = "";
+		$scope.localData = false;
+		$scope.graphicClose = false;
 		$scope.back = function() {
 			$scope.checkBehave = '';
+			$scope.carousel1();
+			$scope.closeCarousel = false;
 			$location.url('/');
+		};
+		$scope.saveLocalStorage = function(user) {
+			browStorage.saveLocalStorage(user);
+			$scope.localData = false;
+			$scope.showCard();
+		};
+		$scope.readLocalStorage = function(read) {
+			if ((localStorage[read]!='')&&(localStorage[read]!=undefined)&&(localStorage[read]!=null)) {
+						$scope.localData = true; 
+					}
+			return browStorage.readLocalStorage(read);
 		};
 
 		$scope.changeAmount = function(amount, index) {
@@ -80,19 +88,6 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 			for (var value3 in $scope.shoppingCard) {
 				$scope.count += $scope.shoppingCard[value3].price * $scope.shoppingCard[value3].amount;
 				$scope.cardAmount += $scope.shoppingCard[value3].amount;
-			}
-		};
-
-		$scope.saveLocalStorage = function(user) {
-			if (typeof(Storage) != "undefined") {
-				if (user) {
-					localStorage.setItem("user.firstname", user.firstname);
-					localStorage.setItem("user.lastname", user.lastname);
-					localStorage.setItem("user.email", user.email);
-					localStorage.setItem("user.zipandcity", user.zipandcity);
-					localStorage.setItem("user.street", user.street);
-				}
-				$scope.showCard();
 			}
 		};
 
@@ -177,14 +172,6 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 			$location.url('/item');
 		};
 
-		$scope.readLocalStorage = function(read) {
-			if (typeof(Storage) != "undefined") {
-				if (localStorage[read]) {
-					return localStorage[read]+'*';	
-				}
-			}
-		};
-
 		$scope.showCard = function() {
 			$scope.countCard();
 			$scope.checkBehave = '';
@@ -197,16 +184,7 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 				var limit = false;
 				for (var value4 in $scope.shoppingCard) {
 					hintCard += '<p><li>'+$scope.shoppingCard[value4].name+' ('+$scope.shoppingCard[value4].amount+')</li></p>';
-					/*
-					if (value4>=3) {
-						if (limit!=true) {
-							hintCard += '<p><li>'+$scope.shoppingCard[value4].name+' ('+$scope.shoppingCard[value4].amount+') ....</li></p>';
-							limit = true;
-						}
-					} else {
-						
-					}*/
-			}
+				}
 				hintCard += '</ul></div';
 				$("#hintCart").append(hintCard); // "#hintCart" 
 			}
@@ -240,52 +218,42 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 			}
 			$scope.countCard();
 		};
+		
+		$scope.data = [{'name' : 'Trwa pobieranie danych', 'description' : 'Poczekaj na załadowanie danych z serwera', 'category' : 'Ładowanie danych', 'price' : ''}];
 
+		var newdata = new Firebase('https://phonestore-70aad.firebaseio.com/Products');
+		console.log('new data from firebase');
+		newdata.on("value", function(snapshot) {
+			//var datanew = snapshot.val();
+			$scope.data = snapshot.val();
+			$scope.loadFavorite();
+		}, function (errorObject) {
+		  console.log("The read failed: " + errorObject.code);
+		});
+/*
 		$http({
 			method: "GET",
 			url: 'http://localhost:2403/products/'
 		}).
 		 then(function(success) {
-          $scope.checkdata(success);
+            $scope.checkdata(success);
         }, function(failure) {
-          $scope.checkdata(failure);
-      	});
+            $scope.checkdata(failure);
+      	});*/
 
 		$scope.sendOrder = function(formData) {
-			//if
+			var newdata = new Firebase('https://phonestore-70aad.firebaseio.com/Orders');
 			var order = angular.copy($scope.shoppingCard);
-			var tempData = formData;
-			tempData.products = order;
-			tempData.gift = false;
-			/*
-			console.log(tempData);
-			tempData.firstname = formData.firstname || $scope.readLocalStorage('user.firstname');
-			tempData.lastname = formData.lastname || $scope.readLocalStorage('user.lastname');
-			tempData.email = formData.email || $scope.readLocalStorage('user.email');
-			tempData.zipandcity = formData.zipandcity || $scope.readLocalStorage('user.zipandcity');
-			tempData.street = formData.street || $scope.readLocalStorage('user.street');
-			*/
-			/*
-			var tempData2 = JSON.stringify(formData);
-			try {
-        		JSON.parse(tempData);
-    		} catch (e) {
-        		console.log("to nie JSON");
-        		console.log(e);
-    		} 
-    		tempData = formData;
-    		console.log(tempData);
-			tempData = JSON.stringify(formData);
-			console.log(tempData);
-			try {
-        		JSON.parse(tempData);
-    		} catch (e) {
-        		console.log("to nie JSON");
-        		console.log(e);
-    		} 
-    		console.log("to JSON");*/
-    		console.log(tempData);
-    		$http({
+			var newOrder = formData;
+			newOrder.products = order;
+			newOrder.gift = false;
+			$scope.localData = false;
+
+    		console.log(newOrder);
+
+    		var newPostRef = newdata.push();
+    		newPostRef.set({newOrder});
+    		/*$http({
 				method: "POST",
 				url: 'http://localhost:2403/orders/',
 				data: tempData
@@ -295,13 +263,12 @@ var app = angular.module('app', ['customFilter','ngRoute', 'ngAnimate']);
 				}, function(failure) {
 	          		console.log("Problem");
 					console.log(failure);
-      			});
+      			});*/
 
 			$scope.shoppingCard = [];
 			$scope.checkBehave = '';
 			$scope.countCard();
 			$location.url('/thankyou');
-
 
 		};
 

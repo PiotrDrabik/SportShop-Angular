@@ -1,19 +1,31 @@
+$bg-color: grey;
+$txt-color: white;
+$alert-color: red;
+$card-bgcolor: yellow;
+$ok-color: green;
+$lightok-color: lightgreen;
+$darkbg-color: black;
+$border-ln: solid 1px $darkbg-color;
 
 .whiteTxt {
-	color: white;
+	color: $txt-color;
 	display: inline-block;
 }
 
 .colorGreen {
-	color: green;
+	color: $ok-color;
 }
 
 .lightGreen {
-	color: lightgreen;
+	color: $lightok-color;
 }
 
 .itemSelected {
-	color: lightgreen;	
+	color: $lightok-color;	
+}
+
+.center-img {
+	margin: auto;
 }
 
 .kategFull {
@@ -24,17 +36,24 @@
 	width: 80%;	
 }
 
+.backRed {
+	background-color: $alert-color;
+}
 
 .line {
-	border-bottom: solid 1px black;
-	background-color: grey;
+	border-bottom: $border-ln;
+	background-color: $bg-color;
 	margin: 10px 0px 10px 0;
 	padding: 5px 0px 5px 0;
 }
 
 .blackLine {
-	border-bottom: 1px solid black;
+	border-bottom: $border-ln;
 	margin-bottom: 2%;
+}
+
+.brdcateg {
+	border: $border-ln;
 }
 
 .space {
@@ -44,10 +63,6 @@
 .spaceTopBottom {
 	margin-top: 2%;
 	margin-bottom: 2%;
-}
-
-form > .row > .col {
-	margin-bottom: 1%;
 }
 
 .spaceBigger {
@@ -61,13 +76,6 @@ form > .row > .col {
 	cursor: pointer;
 }
 
-input.ng-dirty.ng-invalid {
-    border-color: red;
-}
-
-input.ng-dirty.ng-valid {
-    border-color: lightgreen;
-}
 
 small.error {
     display: block;
@@ -86,9 +94,9 @@ small.error {
 	display: inline-block;
 	position:relative;
 	margin: auto;
-	color:red;
-	background-color: yellow;
-	background: yellow;
+	color:$alert-color;
+	background-color: $card-bgcolor;
+	background: $card-bgcolor;
 	width: 20px;
 	height: 20px;
   	text-align: center;
@@ -98,62 +106,64 @@ small.error {
 }
 
 .greyBackground, body {
-	background-color:grey;
+	background-color:$bg-color;
+}
+
+#hintItems {
+	border: 1px solid $bg-color;
+	color:$txt-color; 
+	margin-top: 15px;
+	width:80%;
+	/*----*/
+	color:$txt-color; 
+	font-size: 0.66667rem; 
+	line-height: 5px;
+}
+
+
+
+input.ng-dirty {
+
+	&.ng-invalid {
+    	border-color: $alert-color;
+	}	
+	&.ng-valid {
+    	border-color: $lightok-color;
+	}		
+}
+
+form{
+    border: 1px solid $darkbg-color;
+    margin-top: 10px;
+    padding:2%;
+
+    & > .row > .col {
+		margin-bottom: 1%;
+	}
+}
+
+#productList {
+	& div.ng-enter {
+		transition: 0.5s linear all;
+	  	opacity:0.2;
+	}
+	& div.ng-enter-stagger {
+		transition-delay: 0.1s;
+		transition-duration: 0s;
+	}
+
 }
 
 .inputWidth {
 	width:100%;
-	color: white;
-}
-
-.inputWidth > input  {
-	width:100%;
-}
-
-form{
-    border: 1px solid black;
-    margin-top: 10px;
-    padding:2%;
-}
-
-#hintItems {
-	border: 1px solid grey;
-	color:white; 
-	margin-top: 15px;
-	width:80%;
-	/*----*/
-	color:white; margin-top: 15px; font-size: 0.66667rem; line-height: 5px;
+	color: $txt-color;
+	& > input  {
+		width:100%;
+	}
 }
 
 /* animation */
 
-
-#productList div.ng-enter {
-	transition: 0.5s linear all;
-  	opacity:0.2;
-}
-
-#productList div.ng-enter-stagger {
-	transition-delay: 0.1s;
-	transition-duration: 0s;
-}
-/*
-.view-animation.ng-enter, .view-animation.ng-leave {
-  transition:0.3s linear all;
-  position:fixed;
-  width:100%;
-}
-.view-animation.ng-enter {
-  transform:translateX(100%);
-}
-.view-animation.ng-leave,
-.view-animation.ng-enter.ng-enter-active {
-  transform:translateX(0%);
-}
-.view-animation.ng-leave.ng-leave-active {
-  transform:translateX(-100%);
-}
-*/
 .view-animation.ng-enter, .view-animation.ng-leave {
   transition:0.3s linear all;
   position:fixed;
@@ -161,21 +171,14 @@ form{
   height: 50%;
 }
 
-/*.view-animation.ng-enter {
-    width:50%;
-}
-.view-animation.ng-leave,*/
 .view-animation.ng-enter.ng-enter-active {
   width:100%;
   height: 100%;
 }
 .view-animation.ng-leave.ng-leave-active {
-  /*transform:translateX(-100%);*/
   width:100%;
   height: 100%;
 }
-
-
 
 .container.ng-anchor, .container-fluid.ng-anchor {
 	transition:0.5s linear all;
@@ -200,3 +203,4 @@ form{
 .ng-leave.ng-leave-active {
 	opacity: 0.2;
 }
+

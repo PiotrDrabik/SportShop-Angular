@@ -1,7 +1,35 @@
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" ng-hide="closeCarousel">
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid" src="image/zd1.jpg" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+	    <h1>Sklep sportowy Sport Shop</h1>
+	    <p>Promocyjny koszt dostawy 0zł</p>
+	  </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" src="image/zd2.jpg" alt="Second slide">
+      <div class="carousel-caption d-none d-md-block">
+	    <h1>Obuwie w promocji</h1>
+	    <p>Zobacz nasze obniżone ceny na obuwie</p>
+	  </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" src="image/zd3.jpg" alt="Third slide">
+      <div class="carousel-caption d-none d-md-block">
+	    <h1>Szybka wysyłka</h1>
+	    <p>Większość zamówień realizowana do godziny 15:00.</p>
+	  </div>
+    </div>
+    <p class="pull-right" ><input type="checkbox" ng-click="stopCarousel()">UKRYJ KARUZELĘ</p>  
+  </div>
+
+</div>
+
 	<div>
 		<div class="container-fluid">
 		  <div class="row greyBackground">
-		    <div class="col greyBackground" style="border: 1px black solid;">
+		    <div class="col greyBackground brdcateg">
 				<div class="card">
 				  <h3 ng-click="clicked('')" class="card-header text-center kategCursor">Kategorie</h3>
 				</div>
@@ -23,25 +51,24 @@
 
 				    <p class="card-text">{{ item2.description }}</p>
 
-					<button ng-click="AddToCard(item2)" type="button" class="btn btn-success kategCursor">Dodaj do koszyka</button><button type="button" 
+					<button ng-click="AddToCard(item2)" ng-disabled="item2.price==0" type="button" class="btn btn-success kategCursor">Dodaj do koszyka</button><button type="button" 
 					class="btn btn-secondary">{{ item2.price | currency }}</button>
-					<!--
-					<div class="fa space fa-heart" ng-class="{fa-heart-o: mouseon}" ng-mouseleave="" ng-init="mouseon = false"
-					ng-mouseenter="mouseon = true" ng-click="changeFavorite()" aria-hidden="true"></div>-->
 					
 					<i ng-hide="item2.favorite" class="colorGreen kategCursor space fa fa-heart-o" ng-click="changeFavorite(item2, 'add')" ng-class="{itemSelected: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" aria-hidden="true"></i>
 
 					<i ng-show="item2.favorite" class="colorGreen kategCursor space fa fa-heart" ng-click="changeFavorite(item2, 'add')" ng-class="{itemSelected: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" aria-hidden="true"></i>
 
-					<!--
-					<i class="fa fa-heart space" ng-mouseleave="changeFavorite()" 
-					ng-mouseenter="changeFavorite()" ng-click="changeFavorite()" aria-hidden="true"></i>-->
 				  </div>
 				  <p class="line"></p>
 				</div>
 				</div>
 		    </div>
-			<div class="col"></div>
+			<div class="col greyBackground brdcateg">
+				<ul class="list-group">
+				  <li class="list-group-item" style="background-color: #f7f7f9; color: black;">Bestsellery:</li>
+				  <li class="list-group-item" ng-repeat="item2 in data | filter: categSelected | limitTo: 5 : 5">{{ item2.name }}</li>
+				</ul>
+			</div>
 		  </div>
 		</div>
 	</div>

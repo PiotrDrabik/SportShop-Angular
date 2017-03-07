@@ -25,5 +25,5 @@ module.exports = {
     }
 };
 
-// wersja działająca wywołania:
+// invoke:
 // webpack-dev-server --config webpack.config.js --watch

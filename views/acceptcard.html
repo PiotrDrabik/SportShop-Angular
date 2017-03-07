@@ -18,11 +18,18 @@
                 </div>
 			</div>		
 		</div>
-        <div class="row">
+    <div class="row" ng-hide="form1.$valid">
+      <div class="col" ng-show="localData">
+        <label class="inputWidth">
+        <p class="backRed">Część danych została wczytana, sprawdź ich poprawność i usuń dodany znak: <strong>*</strong></p>
+        </label>
+      </div>
+    </div>
+    <div class="row">
 			<div class="col">
 				<label class="inputWidth">Imię
-                    <input type="text" name="fnameInput" placeholder="Wpisz imię" ng-model="user.firstname" ng-value="readLocalStorage('user.firstname')"
-                    ng-minlength="1" required>
+                    <input type="text" name="fnameInput" placeholder="Wpisz imię" ng-model="user.firstname" 
+                    ng-value="readLocalStorage('user.firstname')" ng-minlength="1" required>
                 </label>
                 <div ng-show="form1.fnameInput.$touched" class="kategFull error">
                     <small ng-hide="form1.fnameInput.$valid" class="error">Wprowadź swoje imię</small>
@@ -89,85 +96,3 @@
  		</div>
 	</form>
 </div>
-
-<!--
-            <div class="col-12">
-              <div class="row">
-                <div class="col-6">
-                  <label>Imię
-                    <input type="text" ng-invalid name="fnameInput" placeholder="Wpisz imię" name="UserName" ng-model="user.name" required>
-                  </label>
-                  <div ng-show="form1.fnameInput.$touched">
-                    <small ng-hide="form1.fnameInput.$valid" class="error">Wprowadź swoje imię</small>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <label>Nazwisko</label>
-                  <input type="text" placeholder="Wpisz nazwisko (niewymagane)" name="lnameInput" ng-model="user.lastname">
-                  <div ng-show="form1.lnameInput.$touched">
-                    <small ng-hide="form1.lnameInput.$valid" class="error">Wprowadź swoje nazwisko</small>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <div class="row collapse">
-                    <label>Adres e-mail</label>
-                    <div class="input-group">
-                      <input type="email" placeholder="Wpisz adres e-mail" class="input-group-field" name="mailInput" ng-model="user.email" required>
-                    </div>
-                    <div ng-show="form1.mailInput.$touched">
-                      <small ng-show="form1.mailInput.$error.required" class="error">Podaj adres e-mail</small>
-                      <small ng-show="form1.mailInput.$error.email" class="error">Podaj poprawny adres e-mail</small>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="row collapse">
-                    <label>Hasło</label>
-                    <div class="input-group">
-                      <input type="password" name="password" placeholder="Wpisz hasło" ng-model="user.password" pattern=".{5,}" class="input-group-field" required>
-                    </div>
-                    <div ng-show="form1.password.$touched">
-                      <small ng-show="form1.password.$error.required" class="error">Wprowadź hasło</small>
-                      <small ng-show="form1.password.$error.pattern" class="error">Wprowadzone hasło jest zbyt krótkie</small>
-                    </div>
-                  </div>
-                  <div ng-show="form1.password.$valid">
-                    <input type="checkbox" ng-model="showPass" name="showPwd"> Pokaż hasło: 
-                    <span ng-show="showPass">{{ user.password }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-                <div class="large-4 columns">
-                  <div ng-show="form1.password.$valid && form1.fnameInput.$valid && form1.lnameInput.$valid && form1.mailInput.$valid && checkreg">
-                    <button ng-click="" class="button" name="button" style="width: 200px;">Zatwierdź</button>
-                  </div>
-                  <div ng-show="!form1.password.$valid || !form1.fnameInput.$valid || !form1.lnameInput.$valid || !form1.mailInput.$valid || !checkreg">
-                    <button href="#" class="button disabled" style="width: 200px;">Zatwierdź</button>
-                  </div>
-                </div>
-                <div class="large-8 columns">
-                  <input id="checkbox2" type="checkbox" ng-model="checkreg" name="checkreg"  style="margin-bottom: 22px;">
-                  <label for="checkbox2">Potwierdzam zapoznanie się z regulaminem i akceptuję jego zapisy.</label>
-                  <div ng-show="form1.checkreg.$touched || form1.password.$valid && form1.fnameInput.$valid && form1.lnameInput.$valid && form1.mailInput.$valid">
-                    <small ng-hide="checkreg" class="error">Potwierdż akceptację regulaminu</small>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </form>
-         <div class="row" style="background-color: grey; color: white;">
-            <div class="large-12 columns">
-              <div ng-show="form1.$submitted" style>
-                <pre>user = {{user | json}}</pre>
-              </div>
-             </div>
-        </div>
-      </div>
-    </div>
-    -->
