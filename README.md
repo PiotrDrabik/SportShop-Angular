@@ -6,12 +6,12 @@
 
 ![SportShop](http://papoldesign.pl/cert/Img-sportshop.jpg)
 
-## Code 
+## Administration Panel
 
 You can see administration panel at:
 
 - http://sportshop.papoldesign.pl/admin
-- login biuro@papoldesign.pl
+- login biuro[AT]papoldesign.pl
 - pass Polska
 
 Products and orders (modification was disabled to protect data).
