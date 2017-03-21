@@ -1,0 +1,65 @@
+<div class="kategFull tab-content margin2p">
+		<div class="tab-pane" id="home" role="tabpanel">
+			<table class="table table-sm">
+					<thead>
+					    <tr>
+					      <th>#</th>
+					      <th>First Name</th>
+					      <th>Last Name</th>
+					      <th>E-mail</th>
+					      <th>City</th>
+					      <th>Adress</th>
+					      <th>Gift?</th>
+					      <th></th>
+					    </tr>
+					</thead>
+					<tbody>
+						<span>
+					    <tr ng-repeat="item in items">
+					      <th>{{$index + 1}}</th>
+					      <td>{{item.firstname}}</td>
+					      <td>{{item.lastname}}</td>
+					      <td>{{item.email}}</td>
+					      <td>{{item.zipandcity}}</td>
+					      <td>{{item.street}}</td>
+					      <td>{{item.gift}}</td>
+					      <td><button type="button" ng-click="details($index)" class="btn btn-success">Szczegóły</button></td>
+					    </tr>
+					    </span>
+					</tbody>
+					</table>
+			  </div>
+			  <div class="tab-pane active" id="profile" role="tabpanel">
+				<table class="table table-sm">
+					<thead>
+					    <tr>
+					      <th>#</th>
+					      <th>Item</th>
+					      <th>Description</th>
+					      <th>Price</th>
+					      <th></th>
+					    </tr>
+					</thead>
+					<tbody>
+						<span>
+							<tr ng-show="editItem.check" id="modifyValue">
+						    	<th></th>
+						      	<td><input type="text" ng-model="editItem.name"></td>
+						      	<td><input type="text" ng-model="editItem.description"></td>
+						      	<td><input type="text" ng-model="editItem.price" style="width:50%;"></td>
+						      	<td><button type="button" ng-click="saveChanges(editItem.id)" class="btn btn-info">Save</button></td>
+						    </tr>
+					    </span>
+						<span>
+					    <tr ng-repeat="item2 in data">
+					      <th>{{$index + 1}}</th>
+					      <td>{{item2.name}}</td>
+					      <td>{{item2.description}}</td>
+					      <td>{{item2.price}}</td>
+						  <td><button type="button" ng-click="edit($index)" class="btn btn-info">Edit</button></td>
+					    </tr>
+					    </span>
+					</tbody>
+			</table>
+		</div>
+</div>

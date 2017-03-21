@@ -1,20 +1,19 @@
-<h1 ng-click="authenticate('admin', 'Polska')">Admin login</h1>
 
 <div class="container">
    <form name="form2" novalidate>
    		<div class="row">
-			<div class="col" ng-show="errormsg">
+			<div class="col err" ng-show="errormsg">
 				{{errormsg}}
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<label class="inputWidth">Login
-                    <input type="text" name="fnameInput" placeholder="Wpisz imię" ng-model="user.firstname" ng-value="readLocalStorage('user.firstname')"
+                   <input type="email" name="fnameInput" placeholder="Wpisz adres e-mail" ng-model="user.firstname" ng-value="readLocalStorage('user.firstname')"
                     ng-minlength="1" required>
                 </label>
                 <div ng-show="form2.fnameInput.$touched" class="kategFull error">
-                    <small ng-hide="form2.fnameInput.$valid" class="error">Wprowadź poprawny login</small>
+                    <small ng-hide="form2.fnameInput.$valid" class="error">Wprowadź poprawny adres e-mail</small>
                 </div>
 			</div>
 			<div class="col">

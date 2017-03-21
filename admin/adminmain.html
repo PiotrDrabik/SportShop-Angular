@@ -1,6 +1,6 @@
 
 <div class="container" >
-	<div class="container" data-ng-controller="ordersCtrl" ng-show="$parent.auth">
+	<div class="container" data-ng-controller="ordersCtrl" ng-show="$parent.auth">  
 		    <ul class="nav nav-pills">
 			  <li class="nav-item">
 			    <a class="nav-link kategCursor active" id="profile1" ng-click="changeTab('profile', 'home')">Produkty</a>
@@ -9,39 +9,8 @@
 			    <a class="nav-link kategCursor" id="home1"  ng-click="changeTab('home', 'profile')">Zamówienia</a>
 			  </li>
 			</ul>
-			<div class="kategFull tab-content margin2p">
-			  <div class="tab-pane" id="home" role="tabpanel">
-			  <table class="table table-sm">
-					<thead>
-					    <tr>
-					      <th>#</th>
-					      <th>First Name</th>
-					      <th>Last Name</th>
-					      <th>E-mail</th>
-					      <th>City</th>
-					      <th>Adress</th>
-					      <th>Gift?</th>
-					      <th></th>
-					    </tr>
-					</thead>
-					<tbody>
-						<span>
-					    <tr ng-repeat="item in orders">
-					      <th>{{$index + 1}}</th>
-					      <td>{{item.firstname}}</td>
-					      <td>{{item.lastname}}</td>
-					      <td>{{item.email}}</td>
-					      <td>{{item.zipandcity}}</td>
-					      <td>{{item.street}}</td>
-					      <td>{{item.gift}}</td>
-					      <td><button type="button" ng-click="details($index)" class="btn btn-success">Szczegóły</button></td>
-					    </tr>
-					    </span>
-					</tbody>
-					</table>
-			  </div>
-			  <div class="tab-pane active" id="profile" role="tabpanel">...</div>
-			</div>
+
+			<prod-list></prod-list>
 
 			<div ng-show="choosedItem.length > 0">
 				<table class="table table-sm">

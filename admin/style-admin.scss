@@ -1,0 +1,48 @@
+$alert-color: red;
+$lightok-color: lightgreen;
+$shine-color: white;
+$fulfill-color: grey;
+
+.whiteTxt {
+	color: $shine-color;
+	display: inline-block;
+}
+
+button {
+	margin-top: 2%;
+	width: 60%;
+}
+
+.margin2p {
+	margin: 2%;
+}
+
+.kategFull, div > label, input {
+	width: 100%;
+}
+
+form {
+	border: 1px solid $fulfill-color;
+    margin-top: 10px;
+    padding:2%;
+}
+
+.kategCursor:hover {
+	cursor: pointer;
+}
+
+.err {
+	background-color: $alert-color;
+	width: 100%;
+	color: $shine-color;
+}
+
+input.ng-dirty {
+
+	&.ng-invalid {
+    	border-color: $alert-color;
+	}	
+	&.ng-valid {
+    	border-color: $lightok-color;
+	}		
+}

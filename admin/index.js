@@ -1,4 +1,13 @@
-var appadm = angular.module('appadm', ['ngRoute', 'ngAnimate']);
+require('./style-admin.scss');
+require('angular');
+require('./assets/angularfire.min.js');
+require('./assets/angular-route.min.js');
+
+var appadm = angular.module('appadm', ['ngRoute', 'firebase','adminCtrl', 'ordersController']);
+
+require('./controllers/adminControllers.js');
+require('./controllers/ordersControllers.js');
+require('./directives/products-list.js')(appadm);
 
 	appadm.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider){
 		$locationProvider.hashPrefix('');
@@ -11,10 +20,7 @@ var appadm = angular.module('appadm', ['ngRoute', 'ngAnimate']);
 		.when('/main',
 		{
 			templateUrl: 'adminmain.html',
-			controller: 'authCtrl'
-			/*scope: {
-				authorization: "=",
-			}*/
+			controller: 'ordersCtrl'
 		})
 		.otherwise({
 			redirectTo: '/login'
